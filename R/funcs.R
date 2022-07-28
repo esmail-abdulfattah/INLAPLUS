@@ -494,7 +494,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
     password = list(pin=c(""),MYPATH = "~/Data"),
     control_parallel = list(num_omp=1,num_proc=1, resource = 1))
 {
-  cat("Welcome to INLA+ Package!\n")
+  cat("Welcome to INLAPLUS Package!\n")
   #print(getwd())
   if(password$pin=="165715") MYPATH = get_path(password$MYPATH)
   print(MYPATH)
@@ -527,7 +527,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
     system(call1)
 
     num_proc = control_parallel$num_proc
-    call2 = paste(c("mpirun -np", num_proc, "--map-by socket:PE=${OMP_NUM_THREADS} ./output_server"), collapse = " ")
+    call2 = paste(c("mpirun -np", num_proc, " ./output_server"), collapse = " ") #--map-by socket:PE=${OMP_NUM_THREADS}
     system(call2)
 
     x_size = sizes[[1]]
