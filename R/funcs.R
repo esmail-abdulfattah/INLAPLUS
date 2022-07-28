@@ -527,7 +527,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
 
 
     commands_sys <- c("export OMP_NUM_THREADS=", toString(num_omp), " ; mpirun -np ", toString(num_proc), "--map-by socket:PE=${OMP_NUM_THREADS} ./output_server")
-    mycall <- capture.output(cat(data, sep = " "))
+    mycall <- capture.output(cat(commands_sys, sep = " "))
     system(mycall)
 
     x_size = sizes[[1]]
