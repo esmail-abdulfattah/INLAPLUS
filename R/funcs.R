@@ -526,7 +526,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
     num_proc = control_parallel$num_proc
 
 
-    commands_sys <- c("export OMP_NUM_THREADS=", toString(num_omp), " ; mpirun -np ", toString(num_proc), "--map-by socket:PE=${OMP_NUM_THREADS} ./output_server")
+    commands_sys <- c("export OMP_NUM_THREADS=", toString(num_omp), "; mpirun -np ", toString(num_proc), "--map-by socket:PE=${OMP_NUM_THREADS} ./output_server")
     mycall <- capture.output(cat(commands_sys, sep = " "))
     system(mycall)
 
