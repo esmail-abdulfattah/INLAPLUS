@@ -523,12 +523,12 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
 
   if(control_parallel$resource==1){
     num_omp = control_parallel$num_omp
-    call1 = paste(c("export OMP_NUM_THREADS=", num_omp), collapse = "")
-    system(call1)
-
     num_proc = control_parallel$num_proc
-    call2 = paste(c("mpirun -np", num_proc, " ./output_server"), collapse = " ") #--map-by socket:PE=${OMP_NUM_THREADS}
-    system(call2)
+
+
+    commands_sys <- c("export OMP_NUM_THREADS=", toString(num_omp), " ; mpirun -np ", toString(num_proc), "--map-by socket:PE=${OMP_NUM_THREADS} ./output_server")
+    mycall <- capture.output(cat(data, sep = " "))
+    system(mycall)
 
     x_size = sizes[[1]]
     inla1234 = list()
