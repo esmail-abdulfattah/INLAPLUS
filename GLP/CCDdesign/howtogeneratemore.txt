@@ -1,0 +1,9 @@
+it is case number 36 in this code: (code number 36)
+
+https://raw.githubusercontent.com/hrue/r-inla/devel/inlaprog/src/inla.c
+
+how to access this form terminal?
+
+
+this is for dimension 6
+~/R/x86_64-pc-linux-gnu-library/4.0/INLA/bin/linux/64bit/inla.run -m testit 36 6
