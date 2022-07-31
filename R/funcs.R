@@ -44,37 +44,29 @@ get_random_besag_graph <- function(n){
   return(Q)
 }
 
-get_path <-function(path){
-  if(is.null(path)) path= getwd()
-  folder <- "Data"
-  folder_res <- "Results"
-  if (!file.exists(folder)) dir.create(folder)
-  if (!file.exists(folder_res)) dir.create(folder_res)
+fix_paths <- function(path){
+  setwd(path)
 
-  addnum <- 1
-  # while(TRUE){
-  #
-  #   if (file.exists(folder)) {
-  #     #cat("The folder already exists")
-  #     folder = paste("Data",toString(addnum), sep="")
-  #     addnum = addnum + 1
-  #   } else {
-  #     dir.create(folder)
-  #     break
-  #   }
-  # }
-
-  if (!file.exists(folder)) dir.create(folder)
-  path <- paste0(path,"/",folder, collapse=NULL)
-
-  setwd(folder_res)
+  setwd("Results")
   if (!file.exists("GA")) dir.create("GA")
   if (!file.exists("HP")) dir.create("HP")
 
   setwd(path)
   #dir.create("pc-priors")
 
-  return(path)
+  folder <- "Data"
+  folder_res <- "Results"
+  if (!file.exists(folder)) dir.create(folder)
+  if (!file.exists(folder_res)) dir.create(folder_res)
+
+  MYPATH1 <- paste0(path,"/",folder_res, collapse=NULL)
+  setwd(MYPATH1)
+  if (!file.exists("GA")) dir.create("GA")
+  if (!file.exists("HP")) dir.create("HP")
+
+  MYPATH2 <- paste0(path,"/",folder, collapse=NULL)
+  setwd(MYPATH2)
+  return(MYPATH2)
 }
 
 inla.interpret.formula = function (
@@ -498,13 +490,8 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
   #print(getwd())
   # if(password$pin=="165715") MYPATH = get_path(password$MYPATH)
 
-  MYPATH = system.file(package = "INLAPLUS")
-  setwd(MYPATH)
-
-  folder <- "Data"
-  if (!file.exists(folder)) dir.create(folder)
-  MYPATH <- paste0(MYPATH,"/",folder, collapse=NULL)
-  setwd(MYPATH)
+  MYPATH <- system.file(package = "INLAPLUS")
+  MYPATH <- fix_paths(MYPATH)
   print(MYPATH)
 
   #control_opt: control parameters for optimization

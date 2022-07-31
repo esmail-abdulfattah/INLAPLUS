@@ -8,16 +8,13 @@ Authors@R:c(
            comment = c(ORCID = "0000-0002-0222-1881")))
 Description: INLAPLUS is a prototype of INLA approach based on dense matrices.
 Depends:
-    foreach,
-    dplyr
+    foreach
 Suggests:
-    INLA,
     knitr,
     devtools,
     roxygen2,
     testthat,
     ggplot2
-LazyData: true
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
