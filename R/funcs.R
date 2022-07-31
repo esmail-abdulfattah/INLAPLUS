@@ -45,11 +45,6 @@ get_random_besag_graph <- function(n){
 }
 
 fix_paths <- function(path){
-  setwd(path)
-
-  setwd("Results")
-  if (!file.exists("GA")) dir.create("GA")
-  if (!file.exists("HP")) dir.create("HP")
 
   setwd(path)
   #dir.create("pc-priors")
