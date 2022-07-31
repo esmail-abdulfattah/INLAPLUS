@@ -48,7 +48,7 @@ get_path <-function(path){
   if(is.null(path)) path= getwd()
   folder <- "Data"
   folder_res <- "Results"
-
+  if (!file.exists(folder)) dir.create(folder)
   if (!file.exists(folder_res)) dir.create(folder_res)
 
   addnum <- 1
@@ -496,7 +496,15 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
 {
   cat("Welcome to INLAPLUS Package!\n")
   #print(getwd())
-  if(password$pin=="165715") MYPATH = get_path(password$MYPATH)
+  # if(password$pin=="165715") MYPATH = get_path(password$MYPATH)
+
+  MYPATH = system.file(package = "INLAPLUS")
+  setwd(MYPATH)
+
+  folder <- "Data"
+  if (!file.exists(folder)) dir.create(folder)
+  MYPATH <- paste0(MYPATH,"/",folder, collapse=NULL)
+  setwd(MYPATH)
   print(MYPATH)
 
   #control_opt: control parameters for optimization
