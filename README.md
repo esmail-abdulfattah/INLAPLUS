@@ -9,3 +9,5 @@ The R-INLAPLUS package is under development. It is already compiled to run on 1 
 3. inla1234 is a function to get the inference and plot_marginals is a function that plot the marginal posteriors of the latent field and the hyperparamater.
 4. For instance: to run a poisson model, you need to have four text files in Input folder: responses (y_response.txt), offset (offset.txt - optional), precision matrix for the structured time effect (Qx_time.text) and precision matrix for the structured space effect (Qx_space.text)
 
+
+- Writing the readme file is in progress. 
