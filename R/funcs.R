@@ -262,7 +262,17 @@ fix.formula <- function(blocks,MYPATH)
         m_space <- blocks[[i]]$size
         break}}}
 
+  if(n_time==0) stop("\n\tPlease check time size")
+  if(m_space==0) stop("\n\tPlease check space size")
+
   for(i in 1:nblocks){
+
+    if(blocks[[i]]$type=="iid_time"){
+      blocks[[i]]$size <- n_time
+    } else if(blocks[[i]]$type=="iid_space"){
+      blocks[[i]]$size <- m_space
+    }
+
     if(!blocks[[i]]$type=="intercept" && !blocks[[i]]$type=="covariate"){
       if((blocks[[i]]$type %in% c("iid_space","besag","generic_space","ICAR"))){
         blocks[[i]]$id <- rep(1:m_space, n_time)
