@@ -1,6 +1,6 @@
 # INLAPLUS
 
-The R-INLAPLUS package is under development. It is already compiled to run on 1 system and we are working to make it available on more systems.
+The R-INLAPLUS package is under development. It is already compiled to run on 1 system and we are working to make it available on more systems. In the meantime, please feel free to email me at esmail.abdulfattah@kaust.edu.sa to run INLAPLUS for you.
 
 # How to use INLAPLUS in Python?
 
