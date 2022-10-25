@@ -45,7 +45,7 @@ Use the following command in R to download R-INLAPLUS package
 remotes::install_github("esmail-abdulfattah/INLAPLUS")
 ```
 
-Now you can R-INLAPLUS package to run your codes.
+Now you can R-INLAPLUS package to run your codes. Use the R file in inst folder above to test a running code. 
 
 # How to use INLAPLUS in Python?
 
