@@ -44,16 +44,7 @@ Use the following command in R to download R-INLAPLUS package
 remotes::install_github("esmail-abdulfattah/INLAPLUS")
 ```
 
-If you have downloaded sarus then you can use this commad to run the code:
-```
-mpirun -N 1 -n 1 sarus run --mpi --workdir=(directory of INLAPLUS Package) esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl
-```
-
-For example after adding the directory:
-```
-mpirun -N 1 -n 1 sarus run --mpi --workdir=/home/abdulfe/R/x86_64-pc-linux-gnu-library/4.2/INLAPLUS/ esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl
-```
-
+Now you can R-INLAPLUS package to run your codes.
 
 # How to use INLAPLUS in Python?
 
