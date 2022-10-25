@@ -32,7 +32,7 @@ sudo ./configure_installation.sh
 export PATH=/opt/sarus/1.5.0-Release/bin:${PATH}
 ```
 
-Pull inlaplus docker image using sarus
+Pull inlaplus docker image using sarus (this will take some time)
 ```
 sarus pull esmailabdulfattah/inlaplus:251122
 ```
