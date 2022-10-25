@@ -2,35 +2,42 @@
 
 # How to use INLAPLUS in R?
 
-## Download sarus (or any other software that can pull a docker image like singularity)
+### Step 1: Download sarus (or any other software that can pull a docker image like singularity)
 
+Installation lines for sarus - part 1
+```
 wget https://github.com/eth-cscs/sarus/releases/download/1.5.0/sarus-Release.tar.gz
-
 mkdir /opt/sarus
-
 cd /opt/sarus
-
 sudo cp /home/abdulfe/sarus-Release.tar.gz ./
-
 tar xf sarus-Release.tar.gz
+```
 
-cd /opt/sarus/1.5.0-Release
-
-#If squashfs-tools not available install it
-
+If squashfs-tools not available install it
+```
 sudo apt-get update
 sudo apt-get -y install squashfs-tools
-
-# or:
-
+```
+or 
+```
 sudo apt update
 sudo apt -y install squashfs-tools
+```
 
+Installation lines for sarus - part 2
+```
 cd /opt/sarus/1.5.0-Release
 sudo ./configure_installation.sh
 export PATH=/opt/sarus/1.5.0-Release/bin:${PATH}
+```
 
-## Download INLAPLUS package 
+Pull inlaplus docker image using sarus
+```
+sarus pull esmailabdulfattah/inlaplus:251122
+```
+
+
+### Step 2: Download INLAPLUS package 
 
 use the following command in R to download R-INLAPLUS package
 
