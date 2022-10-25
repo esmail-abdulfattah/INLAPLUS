@@ -1,6 +1,50 @@
 # INLAPLUS
 
-The R-INLAPLUS package is under development. It is already compiled to run on 1 system and we are working to make it available on more systems. In the meantime, please feel free to email me at esmail.abdulfattah@kaust.edu.sa to run INLAPLUS for you.
+# How to use INLAPLUS in R?
+
+## Download sarus (or any other software that can pull a docker image like singularity)
+
+wget https://github.com/eth-cscs/sarus/releases/download/1.5.0/sarus-Release.tar.gz
+
+mkdir /opt/sarus
+
+cd /opt/sarus
+
+sudo cp /home/abdulfe/sarus-Release.tar.gz ./
+
+tar xf sarus-Release.tar.gz
+
+cd /opt/sarus/1.5.0-Release
+
+#If squashfs-tools not available install it
+
+sudo apt-get update
+sudo apt-get -y install squashfs-tools
+
+# or:
+
+sudo apt update
+sudo apt -y install squashfs-tools
+
+cd /opt/sarus/1.5.0-Release
+sudo ./configure_installation.sh
+export PATH=/opt/sarus/1.5.0-Release/bin:${PATH}
+
+## Download INLAPLUS package 
+
+use the following command in R to download R-INLAPLUS package
+
+remotes::install_github("esmail-abdulfattah/INLAPLUS")
+
+if you downloaded sarus then you can use this commad to run the code:
+
+mpirun -N 1 -n 1 sarus run --mpi --workdir=(directory of INLAPLUS Package) esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl
+
+for example after adding the directory:
+
+mpirun -N 1 -n 1 sarus run --mpi --workdir=/home/abdulfe/R/x86_64-pc-linux-gnu-library/4.2/INLAPLUS/ esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl
+
+
 
 # How to use INLAPLUS in Python?
 
@@ -10,4 +54,4 @@ The R-INLAPLUS package is under development. It is already compiled to run on 1 
 4. For instance: to run a poisson model, you need to have four text files in Input folder: responses (y_response.txt), offset (offset.txt - optional), precision matrix for the structured time effect (Qx_time.text) and precision matrix for the structured space effect (Qx_space.text)
 
 
-- Writing the readme file is in progress. 
+
