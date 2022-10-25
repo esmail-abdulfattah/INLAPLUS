@@ -9,9 +9,10 @@ Installation lines for sarus - part 1
 wget https://github.com/eth-cscs/sarus/releases/download/1.5.0/sarus-Release.tar.gz
 mkdir /opt/sarus
 cd /opt/sarus
-sudo cp /home/abdulfe/sarus-Release.tar.gz ./
+sudo cp /home/<yourusername>/sarus-Release.tar.gz ./
 tar xf sarus-Release.tar.gz
 ```
+In my case I use: sudo cp /home/abdulfe/sarus-Release.tar.gz ./
 
 If squashfs-tools not available install it
 ```
