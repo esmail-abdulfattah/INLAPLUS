@@ -489,7 +489,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
     data = list(y_response=c()),
     control_opt = list(theta=c(-999)),
     password = list(pin=c(""),MYPATH = "~/Data"),
-    control_parallel = list(num_omp=1,num_proc=1, resource = 1))
+    control_parallel = list(num_omp=1,num_proc=1, sarus_resource = NULL))
 {
   cat("Welcome to INLAPLUS Package!\n")
   #print(getwd())
@@ -521,7 +521,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
 
   setwd('..')
 
-  if(control_parallel$resource==2){
+  if(FALSE){
     num_omp = control_parallel$num_omp
     num_proc = control_parallel$num_proc
 
@@ -570,18 +570,30 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
     system('rm -r Results/HP/*')
     return(list(marg_post_x = marg_post_x, marg_post_theta = marg_post_theta))
 
-  }else if(control_parallel$resource==1){
+  }else {
 
     num_omp = control_parallel$num_omp
     num_proc = control_parallel$num_proc
 
+    if(is.null(sarus_source)) {
 
-    commands_sys <- c("mpirun -N ", toString(num_omp) ," -n ", toString(num_proc), " sarus run --mpi --workdir=", MYPATH_p, " esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl")
-    print("running")
-    print(commands_sys)
+      commands_sys <- c("export OMP_NUM_THREADS=", toString(num_omp), " && mpirun -N ", toString(num_omp) ," -n ", toString(num_proc), " sarus run --mpi --workdir=", MYPATH_p, " esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl")
+      print("running")
+      mycall <- capture.output(cat(commands_sys, sep = ""))
+      print(mycall)
+      system(mycall)
 
-    mycall <- capture.output(cat(commands_sys, sep = ""))
-    system(mycall)
+    }else{
+
+      commands_sys <- c(toString(sarus_source), " export OMP_NUM_THREADS=", toString(num_omp), " && mpirun -N ", toString(num_omp) ," -n ", toString(num_proc), " sarus run --mpi --workdir=", MYPATH_p, " esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl")
+      print("running")
+      mycall <- capture.output(cat(commands_sys, sep = ""))
+      print(mycall)
+      system(mycall)
+
+    }
+
+
 
     x_size = sizes[[1]]
     inla1234 = list()
