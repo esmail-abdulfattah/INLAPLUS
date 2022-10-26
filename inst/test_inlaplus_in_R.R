@@ -62,7 +62,7 @@ if(orderRW==2)
   v1 = rep(1:n,each=m)
   for(i in 1:(m-1)) interact.constr = rbind(interact.constr,v1*interact.constr[i,])
   constr.inter <- list(A = interact.constr, e = rep(0, n+m-1+m-1))
-  
+
 }else{
   constr.inter <- list(A = interact.constr, e = rep(0, n+m-1))
 }
@@ -155,7 +155,7 @@ res <- INLAPLUS::inla1234(formula = gf,
                           Qx_type = list(type="generic_Qx"),
                           data = mydata,
                           control_opt = list(safemode = FALSE),
-                          control_parallel = list(num_omp=2,num_proc=2,resource=1))
+                          control_parallel = list(num_omp=1,num_proc=1,sarus_resource="export PATH=/opt/sarus/1.5.0-Release/bin:${PATH} &&"))
 
 
 
