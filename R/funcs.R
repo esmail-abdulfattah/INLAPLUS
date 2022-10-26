@@ -575,7 +575,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
     num_omp = control_parallel$num_omp
     num_proc = control_parallel$num_proc
 
-    if(is.null(sarus_resource)) {
+    if(is.null(control_parallel$sarus_resource)) {
 
       commands_sys <- c("export OMP_NUM_THREADS=", toString(num_omp), " && mpirun -N ", toString(num_omp) ," -n ", toString(num_proc), " sarus run --mpi --workdir=", MYPATH_p, " esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl")
       print("running")
@@ -585,7 +585,8 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
 
     }else{
 
-      commands_sys <- c(toString(sarus_resource), " export OMP_NUM_THREADS=", toString(num_omp), " && mpirun -N ", toString(num_omp) ," -n ", toString(num_proc), " sarus run --mpi --workdir=", MYPATH_p, " esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl")
+      ss <- control_parallel$sarus_resource
+      commands_sys <- c(toString(ss), " export OMP_NUM_THREADS=", toString(num_omp), " && mpirun -N ", toString(num_omp) ," -n ", toString(num_proc), " sarus run --mpi --workdir=", MYPATH_p, " esmailabdulfattah/inlaplus:251122 /software/inlacode/output_mpi_mkl")
       print("running")
       mycall <- capture.output(cat(commands_sys, sep = ""))
       print(mycall)
