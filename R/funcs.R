@@ -262,8 +262,8 @@ fix.formula <- function(blocks,MYPATH)
         m_space <- blocks[[i]]$size
         break}}}
 
-  if(n_time==0) stop("\n\tPlease check time size")
-  if(m_space==0) stop("\n\tPlease check space size")
+  if(n_time==0) print("\n\tPlease check time size")
+  if(m_space==0) print("\n\tPlease check space size")
 
   for(i in 1:nblocks){
 
