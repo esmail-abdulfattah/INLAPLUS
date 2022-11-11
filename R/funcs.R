@@ -199,7 +199,7 @@ fix.formula <- function(blocks,MYPATH)
       blocks$ind_covariate = 1
       s = s + 1
       if(is.null(blocks[[i]]$Z)) stop("\n\tZ covariate matrix should be added to covariate block")
-      if(!all(lapply(names(blocks[[i]]), function(x) x %in% c("type","Q","Z"))==TRUE)==TRUE) stop("\n\tError: Parameters for covariate block are: type, Q and Z")
+      if(!all(lapply(names(blocks[[i]]), function(x) x %in% c("type","Q","Z","prior"))==TRUE)==TRUE) stop("\n\tError: Parameters for covariate block are: type, Q and Z")
       if(is.null(blocks[[i]]$Q)){
         K = dim(blocks[[i]]$Z)[2]
         blocks[[i]]$Q = 0.001*diag(K)
@@ -649,7 +649,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
 #' @param formula it composed of the blocks that construct the precision matrix of the latent field
 #' @keywords Model
 #' @export
-inla1234 <- function(
+inla12345 <- function(
     formula,
     Model = list(),
     data = list(),
