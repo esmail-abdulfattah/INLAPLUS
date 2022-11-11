@@ -649,7 +649,7 @@ export_data <-function(control_strategy,control_opt,Qx_type,inputData,Model,MYPA
 #' @param formula it composed of the blocks that construct the precision matrix of the latent field
 #' @keywords Model
 #' @export
-inla12345 <- function(
+inla1234 <- function(
     formula,
     Model = list(),
     data = list(),

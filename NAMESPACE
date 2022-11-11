@@ -2,4 +2,4 @@
 
 export(get_random_besag_graph)
 export(get_sample_from)
-export(inla12345)
+export(inla1234)
